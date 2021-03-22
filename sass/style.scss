@@ -93,7 +93,14 @@ body{
             width: 45%;
             border: 3px black solid;
         }
+        [id^="saved_book_head_"]{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+        }
     }
+    
 
     
 }

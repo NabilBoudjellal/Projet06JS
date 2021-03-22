@@ -87,13 +87,22 @@ function requestGoogleBooks(_searchTitle,_searchAuthor,_startIndex,_maxResults){
             url: _url,
             dataType: "json",
             success: function(response) {
-                displayTotalResults(response);
-                displayResults(response);
-                navigation_resultats(response,_startIndex,_maxResults);
-                tagAction();
-                if (response.totalItems === 0) {
-                    alert("pas de résultats dans google livre pour cette recherche")
-                                                }
+                if (response.totalItems === 0)
+                    {
+                        $('.hr2').hide();
+                        $('.h2_Recherche').hide();
+                        cleanBooks();
+                        cleanTotalResults();
+                        $(".nbr_results").text("Aucun livre n’a été trouvé pour la recherche ");
+                        clean_navigation();
+                    }else{
+                    displayTotalResults(response);
+                    displayResults(response);
+                    navigation_resultats(response,_startIndex,_maxResults);
+                    tagAction();
+                    }
+
+
                                     },
             });
     }
@@ -111,12 +120,17 @@ function displayResults(_response){
                         
                         $('#book_head_' + format_i).append("<img id='bleu_icon_vide_"+format_i+"' src='img/icon_verte.png'  width='15px' height='15px'>");//icon vide
                         $('#book_head_' + format_i).append("<img id='bleu_icon_plein_"+format_i+"' src='img/icon_verte_plein.png'  width='15px' height='15px'>");// icon pleine
-                        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------
-                            display_icon(_response,i);
-                        //-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                        display_icon(_response,i);
+
                     $('#book_card_' + format_i).append("<div class ='book_ID_"+format_i+"'>Id : "+_response.items[i].id+"</div>");//id result
                     
-                    $('#book_card_' + format_i).append("<div class ='book_Author_"+format_i+"'> Auteur : "+_response.items[i].volumeInfo.authors+"</div>");//authors result
+                    if(_response.items[i].volumeInfo.authors != undefined)
+                    {
+                    first_author = _response.items[i].volumeInfo.authors[0];
+                    }else{
+                    first_author = "Auteur inconnu"
+                    }
+                    $('#book_card_' + format_i).append("<div class ='book_Author_"+format_i+"'> Auteur : "+first_author+"</div>");//authors result
                     var description = _response.items[i].volumeInfo.description;
                     if(description !=undefined){
                         if(description.length > 200) 
@@ -280,7 +294,10 @@ function display_saved_books(){
         if(saved_tab[0] != undefined)
         {
         $(".list_poche").append('<div id="saved_card_'+ i_0000 +'" />');
-            $("#saved_card_"+i_0000).append("<div id ='saved_book_ID_"+i_0000+"'>"+saved_tab[0]+"</div>");
+            //$("#saved_card_"+i_0000).append("<div id ='saved_book_ID_"+i_0000+"'>"+saved_tab[0]+"</div>");
+            $("#saved_card_"+i_0000).append("<div id ='saved_book_head_"+i_0000+"'></div>");
+                $("#saved_book_head_"+i_0000).append("<div id ='saved_book_ID_"+i_0000+"'>"+saved_tab[0]+"</div>");
+                $("#saved_book_head_"+i_0000).append("<img id='delete_icon_"+i_0000+"' src='img/delete.png'  width='15px' height='15px'>");
             $("#saved_card_"+i_0000).append("<div id ='saved_bookTitle_"+i_0000+"'>"+saved_tab[1]+"</div>");
             $("#saved_card_"+i_0000).append("<div id ='saved_book_Author_"+i_0000+"'>"+saved_tab[2]+"</div>");
             $("#saved_card_"+i_0000).append("<div id ='saved_book_Description_"+i_0000+"'>"+saved_tab[3]+"</div>");
@@ -293,6 +310,7 @@ function display_saved_books(){
             }
         }
     }
+    icon_delete_Action();
 }
 //--------------------comparaison session storage id et id résultats de recherche----------------------------------------
 //--------------------et affichage de la bonne étiquette pleine ou vide--------------------------------------------------
@@ -312,3 +330,14 @@ function display_icon(response,_i){
         $("#bleu_icon_plein_"+_format_i).hide();
     }
 }
+//---------------------------------supression livre enregistré par icon delete--------------------------------------------
+function icon_delete_Action(){
+
+    $( "img[id^='delete_icon_']" ).click(function() {
+        var clicked_delete_icon = $( this ).attr('id');
+        var Four_lastChar_delete_icon = clicked_delete_icon.substr(clicked_delete_icon.length - 4);
+        delete_book_ss($("#saved_book_ID_"+Four_lastChar_delete_icon).text().substr(5))
+        clean_list_poche();
+        display_saved_books();
+    });
+};
