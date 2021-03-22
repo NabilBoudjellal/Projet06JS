@@ -1,0 +1,99 @@
+body{
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+#myBooks{
+    margin : 20px;
+    display: flex;
+    flex-direction: column;
+    font-size: 10px;
+    
+    .logo{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .title{
+        padding: 10px 25px;
+        box-shadow: 0 5px 5px gray;
+        background: rgb(235, 232, 232);
+        text-align: center;
+        font-weight: lighter;
+    }
+    h2{
+        text-align: center;
+        font-weight: bolder;
+    }
+    #content{
+        text-align: center;
+        font-weight: bolder;
+    }
+    
+    hr {
+        width: 100%;
+        margin: 20px 0;
+
+    }
+    .js_div{
+        display: flex;
+        flex-direction: column;
+
+        button{
+            border: none;
+            color: white;
+            padding: 10px 10px;
+            width: 40%;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 10px;
+
+        }
+        
+        .add_book_btn{
+            background-color: #4caf8e; 
+        }
+        .btn_recherche{
+            background-color: #4caf8e; 
+            
+        }
+        .btn_annuler{
+            background-color: red; 
+        }
+        
+        label{
+            font-size: 14px;
+        }
+        input{
+            border : 1px solid #aaa;
+            margin: 4px 0;
+            font-size: 14px;
+            padding: 10px;
+        }
+
+    }
+    .result_div{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+            [id^="book_head_"]{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            [id^="book_card_"]{
+                width: 45%;
+                border: 3px black solid;
+            }
+    }
+    .list_poche{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        [id^="saved_card_"]{
+            width: 45%;
+            border: 3px black solid;
+        }
+    }
+
+    
+}
