@@ -65,7 +65,7 @@ var startIndex = 0;
 var maxResults = 10;
 //----------------------Action des boutons Rechercher ------------------------------------------------------------------------------
 $(".btn_recherche").click(function() {
-    
+    startIndex = 0;
     searchTitle = $(".Titre_input").val();
     searchAuthor = $(".Auteur_input").val();
     requestGoogleBooks(searchTitle,searchAuthor,startIndex,maxResults);
@@ -93,7 +93,7 @@ function requestGoogleBooks(_searchTitle,_searchAuthor,_startIndex,_maxResults){
                         $('.h2_Recherche').hide();
                         cleanBooks();
                         cleanTotalResults();
-                        $(".nbr_results").text("Aucun livre n’a été trouvé pour la recherche ");
+                        $(".nbr_results").text("Aucun livre n’a été trouvé");
                         clean_navigation();
                     }else{
                     displayTotalResults(response);
@@ -185,7 +185,7 @@ function navigation_resultats(_response){
                 clean_navigation();
                 $(".navigation").prepend("<a href='#' class='precedent'>Précédent</a>");
                 $(".precedent").click(function(){
-                    startIndex =startIndex + maxResults; 
+                    startIndex =startIndex - maxResults; 
                     requestGoogleBooks(searchTitle,searchAuthor,startIndex,maxResults);
                     $('html, body').animate({ scrollTop: 0 }, 'slow');
                 });}
