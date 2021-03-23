@@ -1,9 +1,6 @@
-body {
-  font-family: "Noto Sans JP", sans-serif;
-}
-
 #myBooks {
-  margin: 20px;
+  font-family: "Noto Sans JP", sans-serif;
+  margin: 3px;
   display: flex;
   flex-direction: column;
   font-size: 10px;
@@ -11,25 +8,25 @@ body {
 #myBooks .logo {
   margin-left: auto;
   margin-right: auto;
+  width: 100px;
 }
 #myBooks .title {
-  padding: 10px 25px;
+  padding: 5px 25px;
   box-shadow: 0 5px 5px gray;
   background: #ebe8e8;
   text-align: center;
   font-weight: lighter;
+  margin: 3px;
 }
 #myBooks h2 {
   text-align: center;
   font-weight: bolder;
-}
-#myBooks #content {
-  text-align: center;
-  font-weight: bolder;
+  margin: 3px;
+  font-size: 12px;
 }
 #myBooks hr {
   width: 100%;
-  margin: 20px 0;
+  margin: 3px 0;
 }
 #myBooks .js_div {
   display: flex;
@@ -38,57 +35,116 @@ body {
 #myBooks .js_div button {
   border: none;
   color: white;
-  padding: 10px 10px;
+  padding: 8px;
   width: 40%;
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 10px;
+  border-radius: 3px;
+  margin: 3px auto 3px auto;
 }
 #myBooks .js_div .add_book_btn {
-  background-color: #4caf8e;
+  background-color: #138f7c;
 }
 #myBooks .js_div .btn_recherche {
-  background-color: #4caf8e;
+  background-color: #138f7c;
 }
 #myBooks .js_div .btn_annuler {
-  background-color: red;
+  background-color: #ff3300;
 }
 #myBooks .js_div label {
-  font-size: 14px;
+  font-size: 12px;
 }
 #myBooks .js_div input {
   border: 1px solid #aaa;
   margin: 4px 0;
   font-size: 14px;
-  padding: 10px;
+  padding: 8px;
+}
+#myBooks .nbr_results {
+  font-weight: bold;
+  margin: 3px;
 }
 #myBooks .result_div {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-}
-#myBooks .result_div [id^=book_head_] {
-  display: flex;
-  flex-direction: row;
   justify-content: space-between;
 }
 #myBooks .result_div [id^=book_card_] {
-  width: 45%;
-  border: 3px black solid;
+  width: 49%;
+  background-color: lightgray;
+  border: 1px black solid;
+  margin-bottom: 3px;
+  font-size: 9px;
+}
+#myBooks .result_div [id^=book_card_] [id^=book_head_] {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-weight: bolder;
+  margin: 3px;
+}
+#myBooks .result_div [id^=book_card_] [class^=book_ID_] {
+  font-weight: bolder;
+  font-style: italic;
+  margin: 3px;
+}
+#myBooks .result_div [id^=book_card_] [class^=book_Author_] {
+  margin: 3px;
+}
+#myBooks .result_div [id^=book_card_] [class^=book_Description_] {
+  margin: 3px;
+}
+#myBooks .result_div [id^=book_card_] [class^=Image_] {
+  text-align: center;
+}
+#myBooks .navigation {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 3px;
+}
+#myBooks .navigation .precedent, #myBooks .navigation .suivant {
+  margin-left: 3px;
+  margin-right: 3px;
+}
+#myBooks #content {
+  text-align: center;
+  font-weight: bolder;
+  margin: 3px;
 }
 #myBooks .list_poche {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 #myBooks .list_poche [id^=saved_card_] {
-  width: 45%;
-  border: 3px black solid;
+  width: 49%;
+  background-color: #fac683;
+  border: 1px black solid;
+  margin-bottom: 3px;
+  font-size: 9px;
 }
-#myBooks .list_poche [id^=saved_book_head_] {
+#myBooks .list_poche [id^=saved_card_] [id^=saved_book_head_] {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  font-weight: bolder;
+  margin: 3px;
+}
+#myBooks .list_poche [id^=saved_card_] [id^=saved_book_ID_] {
+  font-weight: bolder;
+  font-style: italic;
+  margin: 3px;
+}
+#myBooks .list_poche [id^=saved_card_] [id^=saved_book_Author_] {
+  margin: 3px;
+}
+#myBooks .list_poche [id^=saved_card_] [id^=saved_book_Description_] {
+  margin: 3px;
+}
+#myBooks .list_poche [id^=saved_card_] [class^=saved_Image_] {
+  text-align: center;
 }
 
 /*# sourceMappingURL=style.css.map */

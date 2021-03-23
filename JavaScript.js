@@ -195,8 +195,6 @@ function navigation_resultats(_response){
 
 //---------------------------------comportement icon favorti et local storage API--------------------------------------------
 function tagAction(){
-    //$("img[id^='bleu_icon_plein_']").hide();
-
     $( "img[id^='bleu_icon_vide_']" ).click(function() {
         var clicked_vide_id = $( this ).attr('id');
         var Four_lastChar_clicked_vide_id = clicked_vide_id.substr(clicked_vide_id.length - 4);
@@ -294,11 +292,10 @@ function display_saved_books(){
         if(saved_tab[0] != undefined)
         {
         $(".list_poche").append('<div id="saved_card_'+ i_0000 +'" />');
-            //$("#saved_card_"+i_0000).append("<div id ='saved_book_ID_"+i_0000+"'>"+saved_tab[0]+"</div>");
             $("#saved_card_"+i_0000).append("<div id ='saved_book_head_"+i_0000+"'></div>");
-                $("#saved_book_head_"+i_0000).append("<div id ='saved_book_ID_"+i_0000+"'>"+saved_tab[0]+"</div>");
+                $("#saved_book_head_"+i_0000).append("<div id ='saved_bookTitle_"+i_0000+"'>"+saved_tab[1]+"</div>");
                 $("#saved_book_head_"+i_0000).append("<img id='delete_icon_"+i_0000+"' src='img/delete.png'  width='15px' height='15px'>");
-            $("#saved_card_"+i_0000).append("<div id ='saved_bookTitle_"+i_0000+"'>"+saved_tab[1]+"</div>");
+            $("#saved_card_"+i_0000).append("<div id ='saved_book_ID_"+i_0000+"'>"+saved_tab[0]+"</div>");
             $("#saved_card_"+i_0000).append("<div id ='saved_book_Author_"+i_0000+"'>"+saved_tab[2]+"</div>");
             $("#saved_card_"+i_0000).append("<div id ='saved_book_Description_"+i_0000+"'>"+saved_tab[3]+"</div>");
             $("#saved_card_"+i_0000).append("<div class ='saved_Image_"+i_0000+"'></div>");
