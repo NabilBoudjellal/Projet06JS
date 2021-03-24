@@ -118,8 +118,8 @@ function displayResults(_response){
                     $('#book_card_' + format_i).append("<div id='book_head_"+format_i+"'/>");//head card (title + boutton favori)
                         $('#book_head_' + format_i).append("<div id ='bookTitle_"+format_i+"'>Titre : "+_response.items[i].volumeInfo.title+"</div>");//title result
                         
-                        $('#book_head_' + format_i).append("<img id='bleu_icon_vide_"+format_i+"' src='img/icon_verte.png'  width='15px' height='15px'>");//icon vide
-                        $('#book_head_' + format_i).append("<img id='bleu_icon_plein_"+format_i+"' src='img/icon_verte_plein.png'  width='15px' height='15px'>");// icon pleine
+                        $('#book_head_' + format_i).append("<img id='bleu_icon_vide_"+format_i+"' src='img/icon_verte.png'>");//icon vide
+                        $('#book_head_' + format_i).append("<img id='bleu_icon_plein_"+format_i+"' src='img/icon_verte_plein.png'>");// icon pleine
                         display_icon(_response,i);
 
                     $('#book_card_' + format_i).append("<div class ='book_ID_"+format_i+"'>Id : "+_response.items[i].id+"</div>");//id result

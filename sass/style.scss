@@ -1,16 +1,46 @@
 $margin_1 : 3px;
+$margin_2 : 5px;
+
+$fontSize_0 : min(2.5vw,18.5px);
+$fontSize_1 : min(3vw,18px);
+$fontSize_2 : min(3vw,20px);
+$fontSize_3 : min(4vw,20px);
+$fontSize_4 : min(5vw,22.5px);
+$fontSize_5 : min(6vw,30px);
+
+$BookImgWidth : 60%;
+$BookImgMaxWidth : 200px;
+
+$IconWidth : 11%;
+$IconMaxWidth : 30px;
+
+$titleWidth  : 85%;
+$titleMargin : $margin_1 auto $margin_2 auto ;
+$titleMaxWidth :1200px;
+
+$formMargin : $margin_1 auto $margin_1 auto ;
+$formWidth : 95%;
+$formMaxWidth :600px;
+
+//tab variable
+$tabCardfontSize : min(1.7vw,30px);
+
+//deskTop variable
+$deskCardfontSize : min(0.8vw,30px);
 
 #myBooks{
     font-family: 'Noto Sans JP', sans-serif;
     margin : $margin_1;
     display: flex;
     flex-direction: column;
-    font-size: 10px;
+    
     
     .logo{
         margin-left: auto;
         margin-right: auto;
-        width: 100px;
+        width: 35%;
+        max-width: 200px;
+        
     }
     .title{
         padding: 5px 25px;
@@ -18,15 +48,14 @@ $margin_1 : 3px;
         background: rgb(235, 232, 232);
         text-align: center;
         font-weight: lighter;
-        margin: $margin_1;
+        font-size: $fontSize_5;
     }
     h2{
         text-align: center;
         font-weight: bolder;
         margin: $margin_1;
-        font-size: 12px;
+        font-size: $fontSize_3;
     }
-
     hr {
         width: 100%;
         margin: $margin_1 0;
@@ -41,8 +70,10 @@ $margin_1 : 3px;
             color: white;
             padding: 8px;
             width: 40%;
+            max-width: 240px;
             border-radius: 3px;
             margin : $margin_1 auto $margin_1 auto;
+            font-size: $fontSize_1;
         }
         
         .add_book_btn{
@@ -57,19 +88,19 @@ $margin_1 : 3px;
         }
         
         label{
-            font-size: 12px;
+            font-size: $fontSize_3;
         }
         input{
-            border : 1px solid #aaa;
-            margin: 4px 0;
-            font-size: 14px;
             padding: 8px;
+            border : 1px solid #aaa;
+            font-size: $fontSize_2;
         }
 
     }
     .nbr_results{
         font-weight: bold;
-        margin: $margin_1;
+        margin: $margin_2 0px;
+        font-size: $fontSize_1;
     }
     .result_div{
         display: flex;
@@ -82,14 +113,23 @@ $margin_1 : 3px;
                 background-color: lightgray;
                 border: 1px black solid;
                 margin-bottom: $margin_1;
-                font-size: 9px;
+                font-size: $fontSize_0;
 
                 [id^="book_head_"]{
                     display: flex;
                     flex-direction: row;
                     justify-content: space-between;
-                    font-weight: bolder;
                     margin: $margin_1;
+
+                    [id^="bookTitle_"]{
+                        font-weight: bolder;
+                    }
+                    img{
+                        width: $IconWidth;
+                        height: 1.2 * $IconWidth;
+                        max-width: $IconMaxWidth;
+                        max-height: 1.2 * $IconMaxWidth;
+                    }
                 }
                 [class^="book_ID_"]{
                     font-weight: bolder;
@@ -104,6 +144,10 @@ $margin_1 : 3px;
                 }
                 [class^="Image_"]{
                     text-align: center;
+                    img{
+                        width: $BookImgWidth;
+                        max-width: $BookImgMaxWidth;
+                    }
                 }
             }
     }
@@ -112,10 +156,11 @@ $margin_1 : 3px;
         flex-direction: row ;
         flex-wrap: wrap;
         justify-content: center;
-        margin: $margin_1;
+        margin: $margin_2;
         .precedent{
             margin-left: $margin_1;
             margin-right: $margin_1;
+            font-size : $fontSize_1;
         }
         .suivant{
             @extend .precedent;
@@ -139,14 +184,23 @@ $margin_1 : 3px;
             background-color: rgb(250, 198, 131);
             border: 1px black solid;
             margin-bottom: $margin_1;
-            font-size: 9px;
+            font-size: $fontSize_0;
 
             [id^="saved_book_head_"]{
                 display: flex;
                 flex-direction: row;
                 justify-content: space-between;
-                font-weight: bolder;
                 margin: $margin_1;
+
+                [id^="saved_bookTitle_"]{
+                    font-weight: bolder;
+                }
+                img{
+                    width: $IconWidth;
+                    height: 1.2 * $IconWidth;
+                    max-width: $IconMaxWidth;
+                    max-height: 1.2 * $IconMaxWidth;
+                }
             }
             [id^="saved_book_ID_"]{
                 font-weight: bolder;
@@ -161,10 +215,92 @@ $margin_1 : 3px;
             }
             [class^="saved_Image_"]{
                 text-align: center;
+                img{
+                    width: $BookImgWidth;
+                    max-width: $BookImgMaxWidth;
+                }
+            }
+        }
+    }
+}
+@media screen and (min-width: 768px) {
+body{
+    background-color: rgb(240, 241, 228);
+    #myBooks{
+        .result_div{
+            [id^="book_card_"]{
+                width: 47%;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 20px;
+                font-size: $tabCardfontSize;
+    
+                [class^="Image_"]{
+                    text-align: center;
+                    img{
+                        width: 25%;
+                    }
+                }
             }
         }
 
+        .list_poche{
+            [id^="saved_card_"]{
+                width: 47%;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 20px;
+                font-size: $tabCardfontSize; 
+                [class^="saved_Image_"]{
+                        text-align: center;
+                        img{
+                            width: 25%;
+                        }
+                    }
+                }
+            }
+        }
     }
-    
+}
+@media screen and (min-width: 1366px) {
+    body{
+        background-color: lightgray;
+        margin: 0 6% 0 6%;
+        #myBooks{
+            margin: 0;
+            padding: 0 2% 0 2%;
+            background-color: white;
 
+            .result_div{
+                [id^="book_card_"]{
+                    width: 42%;
+                    margin: 3% auto 3% auto;
+                    font-size: $deskCardfontSize;
+        
+                    [class^="Image_"]{
+                        text-align: center;
+                        img{
+                            width: 25%;
+                            
+                        }
+                    }
+                }
+            }
+            .list_poche{
+                [id^="saved_card_"]{
+                    width: 42%;
+                    margin: 3% auto 3% auto;
+                    font-size: $deskCardfontSize;
+                    
+                    [class^="saved_Image_"]{
+                            text-align: center;
+                            img{
+                                width: 25%;
+                                
+                            }
+                        }
+                    }
+                }
+        }
+    }
 }
