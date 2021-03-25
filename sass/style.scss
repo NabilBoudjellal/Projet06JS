@@ -72,11 +72,12 @@ $deskCardfontSize : min(0.8vw,30px);
             width: 40%;
             max-width: 240px;
             border-radius: 3px;
-            margin : $margin_1 auto $margin_1 auto;
+            margin : $margin_1 0;
             font-size: $fontSize_1;
         }
         
         .add_book_btn{
+            margin: $margin_1 auto;
             background-color: rgb(19, 143, 124); 
         }
         .btn_recherche{
@@ -225,7 +226,6 @@ $deskCardfontSize : min(0.8vw,30px);
 }
 @media screen and (min-width: 768px) {
 body{
-    background-color: rgb(240, 241, 228);
     #myBooks{
         .result_div{
             [id^="book_card_"]{
@@ -264,7 +264,7 @@ body{
 }
 @media screen and (min-width: 1366px) {
     body{
-        background-color: lightgray;
+        background-color: rgb(250, 244, 244);
         margin: 0 6% 0 6%;
         #myBooks{
             margin: 0;

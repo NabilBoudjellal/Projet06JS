@@ -39,10 +39,11 @@
   width: 40%;
   max-width: 240px;
   border-radius: 3px;
-  margin: 3px auto 3px auto;
+  margin: 3px 0;
   font-size: min(3vw, 18px);
 }
 #myBooks .js_div .add_book_btn {
+  margin: 3px auto;
   background-color: #138f7c;
 }
 #myBooks .js_div .btn_recherche {
@@ -175,9 +176,6 @@
 }
 
 @media screen and (min-width: 768px) {
-  body {
-    background-color: #f0f1e4;
-  }
   body #myBooks .result_div [id^=book_card_] {
     width: 47%;
     margin-left: auto;
@@ -207,7 +205,7 @@
 }
 @media screen and (min-width: 1366px) {
   body {
-    background-color: lightgray;
+    background-color: #faf4f4;
     margin: 0 6% 0 6%;
   }
   body #myBooks {

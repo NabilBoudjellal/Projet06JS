@@ -1,5 +1,5 @@
-//------------------------Création d'une div (.js_div) contenant les boutons et le formulaire ----------------------------
-$(".h2").after('<div class="js_div" />'); // création de la class js_div
+//------------------------creating div named (.js_div) which contains the form elements ----------------------------
+$(".h2").after('<div class="js_div" />'); 
     $(".js_div").append('<button class="add_book_btn">Ajouter un livre</button>');//Ajout du bouton Ajouter 
 
     $(".js_div").append('<label class="label_titre_du_livre">Titre du livre</label>');//Ajout label titre du livre
@@ -13,7 +13,7 @@ $(".h2").after('<div class="js_div" />'); // création de la class js_div
     $(".js_div").append('<h2 class="h2_Recherche">Résultats de recherche</h2>');//Titre résultats de recherche
 
 
-//----------------------Action des boutons annuler et ajouter un livre et ajouter un livre --------------------------------
+//----------------------action of btn Ajouter un livre and Rechercher --------------------------------
 $('.label_titre_du_livre').hide();
 $('.Titre_input').hide();
 $('.label_auteur').hide();
@@ -51,26 +51,26 @@ $('.btn_annuler').click(function() {
     cleanBooks();
     clean();
 });
-//------------------------Création d'une div (.result_div) contenant le retour de l'API google books ----------------------------
+//------------------------ creating div named (.result_div) which contains the return of the google book API -----------------------
 $(".js_div").after('<div class="nbr_results"></div>');
 $(".nbr_results").after('<div class="result_div"></div>');
 $(".result_div").after('<div class="navigation"></div>');
 
-//----------------------variables nécessaire requete PAI google ---------------------------------------------------------------------
+//----------------------required variables for the API request---------------------------------------------------------------------
 var bookUrl = "https://www.googleapis.com/books/v1/volumes?q="; //variable contenant l'url vers notre API google Books
 var searchTitle ; // variable qui stocke le contenue de la zone de texte Titre
 var searchAuthor ; // variable qui stocke le contenue de la zone de texte auteur
 var _url; //variable qui définit le format de l'url que nous allons utiliser en fonction de la recherche auteur, titre ou les deux
 var startIndex = 0;
 var maxResults = 10;
-//----------------------Action des boutons Rechercher ------------------------------------------------------------------------------
+//----------------------action of btn Rechercher ------------------------------------------------------------------------------
 $(".btn_recherche").click(function() {
     startIndex = 0;
     searchTitle = $(".Titre_input").val();
     searchAuthor = $(".Auteur_input").val();
     requestGoogleBooks(searchTitle,searchAuthor,startIndex,maxResults);
 });
-//---------------------------------------------- fonction qui requete l'API google book -----------------------------------
+//---------------------------------------------- function that requests the API google book -----------------------------------
 function requestGoogleBooks(_searchTitle,_searchAuthor,_startIndex,_maxResults){
     if(_searchTitle === "" && _searchAuthor === ""){
         displayError();
@@ -107,7 +107,7 @@ function requestGoogleBooks(_searchTitle,_searchAuthor,_startIndex,_maxResults){
             });
     }
 }
-//---------------------------------------------- function to display Results google books API-----------------------------------
+//---------------------------------------------- function to display the Results of the google books API request-----------------------------------
 function displayResults(_response){
 	cleanBooks();
             for (i=0;i<_response.items.length;i++){
@@ -115,7 +115,7 @@ function displayResults(_response){
 
                 $(".result_div").append('<div id="book_card_'+ format_i +'" />'); // book items container of
 
-                    $('#book_card_' + format_i).append("<div id='book_head_"+format_i+"'/>");//head card (title + boutton favori)
+                    $('#book_card_' + format_i).append("<div id='book_head_"+format_i+"'/>");//head card (title + bouton favori)
                         $('#book_head_' + format_i).append("<div id ='bookTitle_"+format_i+"'>Titre : "+_response.items[i].volumeInfo.title+"</div>");//title result
                         
                         $('#book_head_' + format_i).append("<img id='bleu_icon_vide_"+format_i+"' src='img/icon_verte.png'>");//icon vide
@@ -151,7 +151,7 @@ function displayResults(_response){
             }
 } 
 
-//---------------------------------Fonction qui gère l'affichage des résultats suivants et précédents--------------------------------------------
+//---------------------------------Pagination function with the btn's suivants and précédents--------------------------------------------
 function navigation_resultats(_response){
     clean_navigation();
     _totalResults = _response.totalItems;
@@ -193,7 +193,7 @@ function navigation_resultats(_response){
     }
 }
 
-//---------------------------------comportement icon favorti et local storage API--------------------------------------------
+//---------------------------------bookmark icon behaviour and local storage API--------------------------------------------
 function tagAction(){
     $( "img[id^='bleu_icon_vide_']" ).click(function() {
         var clicked_vide_id = $( this ).attr('id');
@@ -215,14 +215,14 @@ function tagAction(){
         display_saved_books();
     });
 };
-//--------------------------fonction qui crée une image à partir d'un lien----------------------------
+//--------------------------function to create an image -----------------------------------------------------------------------------------
 
 function createImage(source,_format_i) {
     var pastedImage = new Image(100);
     pastedImage.src = source;
     $(".Image_"+_format_i).html(pastedImage);
 }
-//--------------------------fonction qui affiche un message d'erreur si les deux champ auteur et titre sont vide----------------------------
+//--------------------------function to display error message used when the labels are empty----------------------------
 function displayError() {
     cleanBooks();
     alert("il est impossible de faire une recherche avec les deux champs auteur et titre vide \nVeuillez remplir au moins un des deux champs, \n....Merci");
@@ -239,7 +239,7 @@ function cleanBooks(){
 function clean_list_poche(){
 	$(".list_poche").empty();
 }	
-//---------------------------------fonction qui permet de cleaner les input's titre et auteur-----------------------------------
+//---------------------------------function to clear input's title and author-----------------------------------
 function clean(){
     $(".Titre_input").val('');
     $(".Auteur_input").val('');    
@@ -249,7 +249,7 @@ function zeroPad(num, places) {
     var zero = places - num.toString().length + 1;
     return Array(+(zero > 0 && zero)).join("0") + num;
   }
-///--------------------------------- fonction qui affiche le nombre de résultat retourné par l'API google ----------------------
+///--------------------------------- function to display the number of results of the API ----------------------------------------------
 function displayTotalResults(_response){
     $('.hr2').show();
     $('.h2_Recherche').show();
@@ -257,37 +257,36 @@ function displayTotalResults(_response){
 	
 	$(".nbr_results").text("Un total de "+ _response.totalItems +" résultats ont été trouvés");
 }
-//--------------------------------- fonction qui clean le texte du nombre de résultat -----------------------------------------------------
+//--------------------------------- function to clear div=.nbr_results-----------------------------------------------------
 function cleanTotalResults(){
 	$(".nbr_results").empty();
 }
-//--------------------------------- fonction qui permet de sauvgarder un livre dans session storage ---------------------------------------
+//--------------------------------- fouction to save books in session storage ---------------------------------------
 function save_book_ss(Four_lastChar){
     var book_tab = [];
-    // [0] id, [1] titre, [2] auteur, [3] Description, [4] img link 
+    // book_tab ::::::  [0] id, [1] titre, [2] auteur, [3] Description, [4] img link 
     book_tab.push($(".book_ID_"+Four_lastChar).text());
     book_tab.push($("#bookTitle_"+Four_lastChar).text());
     book_tab.push($(".book_Author_"+Four_lastChar).text());
     book_tab.push($(".book_Description_"+Four_lastChar).text());
     book_tab.push($(".Image_"+Four_lastChar).find("img")[0].src);
-    //conversion de notre tableau en String
+    //converting book_tab to String
     var json_book_tab = JSON.stringify(book_tab);
-    //sauvegarde de nos résultats dans session storage avec key l'ID du livre et le tableau de string en valeurs
+    //save results in session storage with ID in key
     sessionStorage.setItem(book_tab[0].substr(5),json_book_tab);
 }
-//--------------------------------- fonction qui permet de supprimer un livre de session strage ---------------------------------------
+//--------------------------------- function to delete a book from the session strage ---------------------------------------
 function delete_book_ss(id_to_delete){
     sessionStorage.removeItem(id_to_delete);
 }
-
-//------------------------Création d'une div (.list_poche) affichant les livres sauvegardés ----------------------------
+//------------------------creating div named (.list_poche) which contains saved books ----------------------------
 $("#content").after('<div class="list_poche"></div>');
 display_saved_books();
-//------------------------Fonction qui affiche les livre sauvegardés ----------------------------
+//------------------------Function to display saved books --------------------------------------------------------------
 function display_saved_books(){
     for(var i = 0; i< sessionStorage.length;i++){
-        var key = sessionStorage.key(i);//index de la session storage
-        saved_tab = JSON.parse(sessionStorage.getItem(key));//valeur de la session storage
+        var key = sessionStorage.key(i);//index of session storage
+        saved_tab = JSON.parse(sessionStorage.getItem(key));//value of session storage
         var i_0000 =  zeroPad(i, 4);
         if(saved_tab[0] != undefined)
         {
@@ -309,8 +308,8 @@ function display_saved_books(){
     }
     icon_delete_Action();
 }
-//--------------------comparaison session storage id et id résultats de recherche----------------------------------------
-//--------------------et affichage de la bonne étiquette pleine ou vide--------------------------------------------------
+//--------------------function to compare between session session storage id et id  of search results----------------------------------------
+//--------------------and display the right tag ---------------------------------------------------------------------------------------------
 function display_icon(response,_i){
     test = false;
     var _format_i = zeroPad(_i, 4);
@@ -327,7 +326,7 @@ function display_icon(response,_i){
         $("#bleu_icon_plein_"+_format_i).hide();
     }
 }
-//---------------------------------supression livre enregistré par icon delete--------------------------------------------
+//---------------------------------behavior of the delete icon--------------------------------------------
 function icon_delete_Action(){
 
     $( "img[id^='delete_icon_']" ).click(function() {
