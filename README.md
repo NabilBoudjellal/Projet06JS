@@ -2,7 +2,7 @@
 
 To run properly the application you must :
 ## Installing and running SASS
-If you use npm execute the commande : ''' npm install -g sass '''
+If you use npm execute the commande : ``` npm install -g sass ```
 If not : 
 ### From the git repository https://github.com/sass/dart-sass/releases/tag/1.32.8
 Select the right operating system and install it on your machine
