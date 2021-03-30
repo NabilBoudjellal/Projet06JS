@@ -1,7 +1,7 @@
 # Projet06JS
 
 To run properly the application you must :
-#Installing and running SASS
+1- Installing and running SASS
 if you use npm execute the commande : npm install -g sass
 if not : 
 * from the git repository https://github.com/sass/dart-sass/releases/tag/1.32.8
